@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واصل | الإمبراطورية اللوجستية المتكاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --wassel-primary: #6c25be; 
+            --wassel-dark: #2d0a5a;    
+            --wassel-accent: #ff007c;  
+            --wassel-gradient: linear-gradient(135deg, #6c25be 0%, #2d0a5a 100%);
+            --wassel-light: #f8f4ff;   
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* تفعيل الانتقال الانسيابي */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        body { background: #fff; color: #333; overflow-x: hidden; line-height: 1.7; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 5000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 3px solid var(--wassel-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo img { height: 50px; border-radius: 8px; }
+        .logo span { font-size: 1.8rem; font-weight: 900; color: var(--wassel-primary); }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 700; transition: var(--transition); }
+        .nav-links a:hover { color: var(--wassel-primary); }
+        .btn-app { background: var(--wassel-primary); color: #fff !important; padding: 10px 25px; border-radius: 12px; font-size: 0.9rem; text-decoration: none; }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(45, 10, 90, 0.85), rgba(108, 37, 190, 0.8)), 
+                        url('https://images.unsplash.com/photo-1586864387917-f585252538b8?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            text-align: center; color: #fff; padding: 100px 5% 50px;
+        }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; line-height: 1.2; margin-bottom: 25px; }
+        .hero-content span { color: var(--wassel-accent); text-shadow: 0 0 20px rgba(255,0,124,0.4); }
+        .hero-content p { font-size: 1.5rem; max-width: 850px; margin: 0 auto 40px; opacity: 0.9; }
+
+        section { padding: 120px 8%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3.5rem; font-weight: 900; color: var(--wassel-dark); }
+        .section-header span { color: var(--wassel-primary); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card {
+            background: var(--wassel-light); padding: 50px 30px; border-radius: 35px;
+            text-align: center; transition: var(--transition); border: 1px solid #eee;
+        }
+        .service-card:hover { 
+            transform: translateY(-15px); background: #fff; 
+            box-shadow: 0 30px 60px rgba(108,37,190,0.15); border-color: var(--wassel-primary);
+        }
+        .service-card i { font-size: 4rem; color: var(--wassel-primary); margin-bottom: 25px; }
+        .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--wassel-dark); }
+
+        .flex-row { display: flex; align-items: center; gap: 80px; margin-bottom: 100px; flex-wrap: wrap; }
+        .content-text { flex: 1; min-width: 350px; }
+        .content-text h2 { font-size: 3rem; color: var(--wassel-primary); margin-bottom: 25px; }
+        .content-image { flex: 1; min-width: 350px; border-radius: 40px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.15); height: 500px; }
+        .content-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+
+        .ride-dark { background: var(--wassel-dark); color: #fff; border-radius: 80px 80px 0 0; }
+        .car-card { background: rgba(255,255,255,0.05); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .car-card h3 { padding: 20px; text-align: center; color: #fff; }
+
+        .join-box { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
+        .join-card { 
+            flex: 1; min-width: 300px; padding: 60px 40px; border-radius: 40px; color: #fff;
+            display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+        }
+        .merchant-bg { background: var(--wassel-primary); }
+        .driver-bg { background: var(--wassel-accent); }
+        .btn-white { background: #fff; color: #000; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 900; margin-top: 30px; }
+
+        .cta-final { 
+            background: var(--wassel-gradient); color: #fff; text-align: center; padding: 120px 8%;
+            border-radius: 0 0 80px 80px;
+        }
+        .play-store { height: 85px; margin-top: 40px; transition: 0.3s; cursor: pointer; }
+
+        footer { background: #0a0514; color: #bbb; padding: 100px 8% 40px; }
+        .footer-links h5 { color: var(--wassel-accent); margin-bottom: 25px; font-size: 1.2rem; }
+        .footer-links a { color: #bbb; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #fff; padding-right: 8px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; margin-top: 50px; }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .nav-links { display: none; }
+            section { padding: 80px 5%; }
+            .hero-content h1 { font-size: 3rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <img src="https://scontent.fogx1-2.fna.fbcdn.net/v/t39.30808-6/528345987_122120674574941324_7823706503344563364_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=Z7TmqRE_aL0Q7kNvwHR4-cp&_nc_oc=Adr3ieLPUZkMlvTAXPFYNO617JFG8y4qrDwP34O0KoHEwYRZkytvHkyixLZwV5VHXZ8&_nc_zt=23&_nc_ht=scontent.fogx1-2.fna&_nc_gid=IpN1SWHZhTNlTRKTHWNJkg&_nc_ss=7a30f&oh=00_Afy8UZBt-3ADfNHjpbTRwSVnMzG9CgQSd9zqmzLKBMPaig&oe=69CE10DA" alt="Logo">
+            <span>واصـل</span>
+        </a>
+        <div class="nav-links">
+            <a href="#services">الخدمات</a>
+            <a href="#ride">التنقل</a>
+            <a href="#merchants">للتجار</a>
+            <a href="#about">عن المنصة</a>
+            <a href="https://play.google.com/store/apps/details?id=com.wassel.userapp" class="btn-app"><i class="fab fa-android"></i> تحميل الأندرويد</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-content" data-aos="zoom-out">
+            <h1>مع <span>واصل</span>..<br>كل احتياجاتك..
+بين يديك محلياً</h1>
+            <p>واصل يجمع لك أفضل المتاجر والمطاعم في منطقتك. لا داعي للتنقل أو الانتظار طويلاً، نحن نوفر لك كل ما تحتاجه بضغطة زر واحدة ومن أقرب مكان إليك .</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://play.google.com/store/apps/details?id=com.wassel.userapp"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="play-store" style="margin-top:0"></a>
+                <a href="#services" style="padding: 22px 45px; background: #fff; color: var(--wassel-primary); border-radius: 15px; text-decoration: none; font-weight: 900; font-size: 1.2rem; transition: 0.3s;">اكتشف خدماتنا</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="section-header" data-aos="fade-up">
+            <h2>خدماتنا <span>الشاملة</span></h2>
+            <p>حلول رقمية مبتكرة لكل احتياجاتك اليومية</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <i class="fas fa-utensils"></i>
+                <h3>المطاعم</h3>
+                <p>أشهر الأطباق والوجبات السريعة تصلك ساخنة وبأسرع وقت.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-shopping-basket"></i>
+                <h3>قضيان الدار</h3>
+                <p>تسوق من السوبر ماركت، الخضر والفواكه بضغطة زر واحدة.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-truck-fast"></i>
+                <h3>توصيل الطرود</h3>
+                <p>نقل آمن للطرود والوثائق بين الولايات والبلديات بأسعار تنافسية.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-pills"></i>
+                <h3>الصيدلية</h3>
+                <p>توفير المستلزمات الطبية والأدوية مع خدمة التوصيل للمنازل.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-tools"></i>
+                <h3>خدمات مهنية</h3>
+                <p>قريباً: اطلب حرفيين معتمدين (كهرباء، سباكة، صيانة) من التطبيق.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-bolt"></i>
+                <h3>خدمات سريعة</h3>
+                <p>أي شيء تحتاجه من أي مكان، واصل يوصله لك في دقائق.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: var(--wassel-light);">
+        <div class="flex-row">
+            <div class="content-text" data-aos="fade-left">
+                <h2>تكنولوجيا <span>تسبق الزمن</span></h2>
+                <p style="font-size: 1.3rem; color: #666;">نعتمد في واصل على خوارزميات ذكاء اصطناعي متطورة لتوزيع الطلبات على أقرب الموزعين، مما يضمن تقليل وقت الانتظار.</p>
+                <ul style="list-style: none; margin-top: 30px;">
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--wassel-primary); margin-left: 10px;"></i> نظام تتبع مباشر للطلب على الخريطة</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--wassel-primary); margin-left: 10px;"></i> حماية كاملة لبيانات العملاء والتجار</li>
+                </ul>
+            </div>
+            <div class="content-image" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="Tech">
+            </div>
+        </div>
+    </section>
+
+    <section class="ride-dark" id="ride">
+        <div class="section-header" data-aos="fade-up">
+            <span style="background: var(--wassel-accent); padding: 5px 20px; border-radius: 50px; font-weight: 900; font-size: 1rem;">قريباً جداً</span>
+            <h2 style="color: #fff; margin-top: 20px;">Wassel Ride <br>مشوارك <span>بأمان</span></h2>
+        </div>
+        <div class="car-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+            <div class="car-card" data-aos="flip-left">
+                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 200px; object-fit: cover;">
+                <h3>واصل اقتصادي</h3>
+            </div>
+            <div class="car-card" data-aos="flip-left" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 200px; object-fit: cover;">
+                <h3>واصل VIP</h3>
+            </div>
+            <div class="car-card" data-aos="flip-left" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=500&q=80" style="width: 100%; height: 200px; object-fit: cover;">
+                <h3>واصل عائلي</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="merchants">
+        <div class="section-header">
+            <h2>كن شريكاً في <span>النجاح</span></h2>
+            <p>انضم إلى مئات التجار والموزعين الذين ينمون مع واصل يومياً</p>
+        </div>
+        <div class="join-box">
+            <div class="join-card merchant-bg" data-aos="fade-left">
+                <div>
+                    <i class="fas fa-store" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h3>أنا صاحب متجر</h3>
+                    <p>حول تجارتك إلى العالم الرقمي واترك مهمة التوصيل لـ "واصل".</p>
+                </div>
+                <a href="https://wasseldz.com/mydashboard/" class="btn-white">سجل متجرك الآن</a>
+            </div>
+            <div class="join-card driver-bg" data-aos="fade-right">
+                <div>
+                    <i class="fas fa-motorcycle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h3>أريد العمل كموزع</h3>
+                    <p>كن سيد قرارك، وحقق دخلاً ممتازاً مع نظام عمولات هو الأفضل.</p>
+                </div>
+                <a href="https://wasseldz.com/mydashboard/" class="btn-white">انضم كشريك توصيل</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px;">
+            <div class="footer-logo">
+                <h4 style="color: #fff; font-size: 2rem; margin-bottom: 20px;">واصـل</h4>
+                <p>الإمبراطورية اللوجستية المتكاملة في الجزائر.</p>
+                <div style="display: flex; gap: 15px; margin-top: 25px;">
+                    <a href="https://www.facebook.com/wasseldz/" style="color:#fff; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/wasselmarketdz/" style="color:#fff; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h5>روابط سريعة</h5>
+                <ul style="list-style: none;">
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#ride">حجز السيارات</a></li>
+                    <li><a href="#merchants">انضم إلينا</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>الدعم القانوني</h5>
+                <ul style="list-style: none;">
+                    <li><a href="https://wasseldz.com/privacy-policy">سياسة الخصوصية</a></li>
+                    <li><a href="https://wasseldz.com/terms-and-conditions">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>اتصل بنا</h5>
+                <ul style="list-style: none; color: #bbb;">
+                    <li><i class="fas fa-phone"></i> +213655403990</li>
+                    <li><i class="fas fa-envelope"></i> contact@wassel.dz</li>
+                    <li><i class="fas fa-map-marker-alt"></i> الوادي، الجزائر</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 جميع الحقوق محفوظة لـ <strong>إمبراطورية واصل اللوجستية</strong></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
